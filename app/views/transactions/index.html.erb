@@ -4,10 +4,17 @@
 
 <div id="transactions">
   <% @transactions.each do |transaction| %>
-    <%= render transaction %>
-    <p>
-      <%= link_to "Show this transaction", transaction %>
-    </p>
+    <div class="transaction">
+      <%= render transaction %>
+      <p>
+        <%= link_to "Show this transaction", transaction %>
+      </p>
+      <p>
+        <%= link_to "Edit this transaction", edit_transaction_path(transaction) %>
+      </p>
+      
+      <%= button_to "Destroy this transaction", @transaction, method: :delete %> 
+    </div>
   <% end %>
 </div>
 
