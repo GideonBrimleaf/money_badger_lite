@@ -7,9 +7,13 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.all.order(created_at: :desc)
   end
 
-  # GET /transactions/1/edit
-  def edit
+  # # GET /transactions/new
+  def new
+    @transaction = Transaction.new
   end
+
+  # GET /transactions/1/edit
+  def edit; end
 
   # POST /transactions or /transactions.json
   def create
