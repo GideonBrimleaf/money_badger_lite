@@ -1,24 +1,5 @@
-# README
+# Money Badger Lite
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Proof of concept to test Hotwire crud operations with a single model based off:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[GoRails Hotwire 101](https://www.youtube.com/watch?v=Qp6sxgjA-xY)
