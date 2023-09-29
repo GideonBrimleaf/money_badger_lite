@@ -1,6 +1,16 @@
 <h1>Editing transaction</h1>
 
-<%= render "form", transaction: @transaction %>
+<%# As the corresponding transaction record with the link %>
+<%# to this is inside a turbo frame now, we need to pair this %>
+<%# up as a turbo frame in order to render it correctly. %>
+<%# All requests made inside a turbo frame are looking for a %>
+<%# corresponding turbo frame to pull from in the response template %>
+<%= turbo_frame_tag dom_id(@transaction) do %>
+  <div class="transaction">
+    <%= render "form", transaction: @transaction %>
+    <%= link_to "Cancel", @transaction %>
+  </div>
+<% end %>
 
 <br>
 

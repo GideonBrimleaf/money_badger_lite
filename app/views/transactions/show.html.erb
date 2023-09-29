@@ -1,6 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @transaction %>
+<%# This is a handy thing to wrap in a turbo frame since it allows %>
+<%# us to re-render a specific transaction after the cancel button %>
+<%# has been hit on the edit form %>
+<%= turbo_frame_tag dom_id(@transaction) do %>
+  <%= render @transaction %>
+<% end %>
 
 <div>
   <%= link_to "Edit this transaction", edit_transaction_path(@transaction) %> |

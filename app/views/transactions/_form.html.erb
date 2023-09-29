@@ -1,4 +1,6 @@
-<%= form_with(model: transaction) do |form| %>
+<%# Need the dom_id here to identify where a new version of the form should be %>
+<%# rendered with the transaction %>
+<%= form_with(model: transaction, id: dom_id(transaction)) do |form| %>
   <% if transaction.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>

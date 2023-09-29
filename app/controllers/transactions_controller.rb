@@ -7,7 +7,10 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.all.order(created_at: :desc)
   end
 
-  # # GET /transactions/new
+  # GET /transactions/1 or /transactions/1.json
+  def show; end
+
+  # GET /transactions/new
   def new
     @transaction = Transaction.new
   end
@@ -21,9 +24,12 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
+        # Turbo stream uses the html format by default unless overidden by
+        # a format.turbo_stream argument.
         format.html { redirect_to transactions_url, notice: "Transaction was successfully created." }
         format.json { render :show, status: :created, location: @transaction }
       else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@transaction, partial: "transactions/form", locals: {transaction: @transaction}) }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end

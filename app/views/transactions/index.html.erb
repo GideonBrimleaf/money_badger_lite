@@ -2,10 +2,12 @@
 
 <h1>Transactions</h1>
 
-<%= render "transactions/form", transaction: @transaction%>
-
 <%# Listen to the "transactions" stream for changes %>
 <%= turbo_stream_from "transactions" %>
+
+<%= turbo_frame_tag "transaction_form" do %>
+  <%= render "transactions/form", transaction: @transaction%>
+<% end %>
 
 <%# Add any changes to the "transactions" stream here %>
 <%= turbo_frame_tag "transactions" do %>

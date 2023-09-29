@@ -1,13 +1,13 @@
 <%# For edit/destroy operations - find the specific transaction to update %>
+
 <%= turbo_frame_tag dom_id(transaction) do %>
   <div class="transaction">
-
     <p><strong>Amount:</strong> <%= transaction.amount %></p>
 
     <p><strong>Description:</strong> <%= transaction.description %></p>
 
     <p><%= link_to "Edit this transaction", edit_transaction_path(transaction) %></p>
     
-    <%= button_to "Destroy this transaction", transaction, method: :delete %> 
+    <%= button_to "Destroy this transaction", transaction, method: :delete %>
   </div>
 <% end %>
