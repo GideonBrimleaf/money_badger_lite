@@ -4,15 +4,10 @@
 
 <%= render "transactions/form", transaction: @transaction%>
 
-<div id="transactions">
-  <% @transactions.each do |transaction| %>
-    <div class="transaction">
-      <%= render transaction %>
-      <p>
-        <%= link_to "Edit this transaction", edit_transaction_path(transaction) %>
-      </p>
-      
-      <%= button_to "Destroy this transaction", transaction, method: :delete %> 
-    </div>
-  <% end %>
-</div>
+<%# Listen to the "transactions" stream for changes %>
+<%= turbo_stream_from "transactions" %>
+
+<%# Add any changes to the "transactions" stream here %>
+<%= turbo_frame_tag "transactions" do %>
+  <%= render @transactions %>
+<% end %>
